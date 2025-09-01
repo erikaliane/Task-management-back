@@ -20,7 +20,7 @@ namespace TaskManagementAPI.Services
 
         public async Task<IEnumerable<TaskDto>> GetAllAsync()
         {
-            // Mejor práctica: Join para obtener el perfil del usuario asignado en una sola consulta
+            
             var query = from task in _context.Tasks
                         where !task.IsDeleted
                         join profile in _context.UserProfiles
