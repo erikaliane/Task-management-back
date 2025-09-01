@@ -92,7 +92,6 @@ namespace TaskManagementAPI.Services
             _context.Tasks.Add(task);
             await _context.SaveChangesAsync();
 
-            // Obtiene el perfil recién asignado (si existe)
             var profile = task.AssignedTo.HasValue
                 ? await _context.UserProfiles
                     .Where(p => p.UserId == task.AssignedTo.Value)
