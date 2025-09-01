@@ -33,8 +33,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
             "http://localhost:4200", // Puerto típico de Angular en desarrollo
-            "https://task-management-mu-three.vercel.app",
-            "https://task-management-mu-three.vercel.app/auth/login")
+            "https://task-management-mu-three.vercel.app")
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials();
