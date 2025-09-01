@@ -6,6 +6,10 @@ using TaskManagementAPI.Data.Models;
 using TaskManagementAPI.Services;
 using TaskManagementAPI.Services.Interfaces;
 using TaskManagementAPI.Utils;
+using DotNetEnv;
+
+// Cargar las variables del archivo .env
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TaskManagementDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSQL")));
 
+builder.Configuration["ConnectionStrings:CadenaSQL"] = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+builder.Configuration["Jwt:Key"] = Environment.GetEnvironmentVariable("JWT_SECRET_KEY");
 
 // Add services to the container
-
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<ITaskService, TaskService>();
 builder.Services.AddScoped<IUserProfileService, UserProfileService>();
