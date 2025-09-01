@@ -177,6 +177,7 @@ namespace TaskManagementAPI.Services
                 Description = task.Description,
                 AssignedTo = task.AssignedTo,
                 Status = task.Status,
+                DueDate = task.DueDate,
                 Priority = task.Priority,
                 CreatedAt = task.CreatedAt,
                 UpdatedAt = task.UpdatedAt
